@@ -1,0 +1,78 @@
+# Listar todos los servicios desplegados
+	kubectl get svc
+
+# Hacer port-forward a un servicio
+	kubectl port-forward svc/<svc> 6010:80
+	
+# Listar todos los pods
+	kubectl get pods
+	kubectl get pods -n <namespace>
+	kubectl get pods --all-namespaces
+	kubectl get pods --show-labels
+	kubectl get pods -l <label=none>
+	kubectl get pods -o json | jq -r .items[].spec[] ....  # To verify some things about our deployments
+
+# Put Labels in pods
+	kubectl label pods <pod> <label=none>
+
+# Obtener los logs de un pod
+	kubectl logs -f <pod>
+
+# Obtener descripcion de un pod
+	kubectl describe pods <pod>
+
+# Reiniciar un pod
+	kubectl delete pods <pod>
+
+#Conectarse a un pod
+	kubectl exec -u -it <pod> -- /bin/sh
+
+## DENTRO DE UN POD
+	#Abrir un keystore
+		keytool -list -v -keystore <nombreKeystore>
+
+	# Instalar curl
+		apk add --update curl
+
+	# Probar conectividad
+		curl -iv "<endpoint a probar>"
+
+# Editar Deployment
+    kubectl edit deployment/<name-of-deployment>
+
+# Actualizar cambios 
+    kubectl rollout status deployment/<name-of-deployment>
+
+#Ejecutar aplicacion
+    kubectl run hello-world --image=us.icr.io/<namespace>/hello-world
+
+# Expone la app
+    kubectl expose deployment/hello-world --type="NodePort" --port=8080
+
+# Manipula directamente los recursos a través de YAML, que es un lenguaje de serialización legible por humanos:
+    kubectl (create|get|apply|delete) -f myResource.yaml
+
+# View nodes in the cluster
+	kubectl get nodes
+
+# View services, deployments, and pods
+	kubectl get svc,deploy,pod --all-namespaces
+
+# Get the node port
+	kubectl get svc <svc> -n default
+
+# Apply Environment Variables
+	kubectl apply -f <file.yaml>
+
+# Version de kubectl
+	kubectl version
+
+# Groups of APIS enables in ypur cluster
+	kubectl api-versions
+	
+# Get documentation about
+	kubectl explain <ex: pods.spec.containers>
+
+	kubectl get pods | grep <pod>- | wc -l
+
+	

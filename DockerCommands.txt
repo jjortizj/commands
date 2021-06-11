@@ -1,0 +1,46 @@
+DOCKER COMMANDS
+# Descargar una imagen existente
+	docker pull <image>
+
+# Construir imagen
+	docker build -t <name>:<version> .
+
+# Correr contenedor
+	docker run -d -e <image> -p <host-port>:<container's:port> <name>:<version>
+
+# Listar imagenes
+	docker image ls
+
+# Listar contenedores
+	docker ps
+
+# Eliminar todos los contendores
+	docker rm $(docker ps -a -q) -f
+
+# Eliminar todas las imagenes
+	docker rmi $(docker ps -a -q) -f
+
+# Ingresar a una consola bash en el contenedor
+	docker exec -it <id_container> bash
+
+# Copiar un archivo al contenedor
+	docker cp <file> <id_container>:/<path>
+
+# To start the container 
+	docker start <container_id>
+
+# To stop the container 
+	docker stop <container_id>
+
+# To remove the container 
+	docker rm <container_id>
+
+# Create a bridge network
+	docker network create <name>
+
+# Create volumes
+	docker volume create <name>
+
+# Manage a container
+	docker container stop
+	docker container start

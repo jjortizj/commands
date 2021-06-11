@@ -1,0 +1,7 @@
+# Actualizar el sistema
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt update
+
+# Dar permisos de usuario root
+    

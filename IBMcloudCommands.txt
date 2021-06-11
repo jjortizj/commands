@@ -1,0 +1,27 @@
+# Establecer la variable de entorno
+    ibmcloud ks cluster config --cluster <cluster_name_or_ID>
+
+# Ejecutar imagen como una implementación
+    kubectl run <name-app> --image=us.icr.io/<namespace>/<name-app>
+
+# Verificar el estado de los clusters
+    ibmcloud cs clusters
+
+# Eliminar imagenes
+    ibmcloud cr image-rm us.icr.io/<namespace>/hello-world:2
+
+# Configurar cluster
+    ibmcloud cs cluster <cluster_name>
+
+# View details of your cluster
+    ibmcloud cs cluster-get <your_cluster_name>
+
+# Verify the worker nodes in the cluster
+    ibmcloud cs workers <your_cluster_name>
+    ibmcloud cs worker-get <worker_ID>
+
+# If you need to get the service keys 
+    ibmcloud resource service-key <tone-analyzer-key>
+
+# Get the worker's public IP
+    ibmcloud cs workers <cluster_name>

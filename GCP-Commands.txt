@@ -1,0 +1,22 @@
+# INICIAR SESION EN SDK
+	gcloud init
+	gcloud auth list
+	gcloud config list
+	gcloud components install cloud-datastore-emulator
+
+#Instalar Kubectl
+	gcloud components install kubectl 
+
+#Listar proyectos
+	gcloud projects list 
+
+#Cambiar proyecto
+	gcloud config set project <project> 
+	 
+#Cambiar de cluster
+	gcloud container clusters get-credentials <cluster>
+
+	gcloud container clusters get-credentials <cluster> --zone <zone> --project <project>
+	
+
+

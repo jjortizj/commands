@@ -1,0 +1,101 @@
+# BRANCHES
+	# Creación de Branch's
+
+git add .
+git commit --allow-empty -m ":tada: Master branch created "
+git push origin master
+git checkout -b qa
+git add .
+git commit --allow-empty -m ":tada: qa branch created"
+git push origin qa
+git checkout -b develop
+git add .
+git commit --allow-empty -m ":tada: develop branch created"
+git push origin develop
+
+	# Hacer Tracking a un branch específico
+
+		git checkout -b <branch> --track <remote>/<branch>
+		git add .
+		git commit --allow-empty -m "<branch> branch created"
+		git push origin <branch>
+
+	# Visualizar todas las branch
+		
+		git branch -a
+
+# CUENTA
+
+	# Configuración de cuenta
+
+		git config --global user.name "<username>"
+		git config --global user.email "<email>"
+
+	# Revertir credenciales
+
+		git credential reject
+		protocol=https
+		host=git
+
+# REMOTOS
+	# Configurar un remoto 
+	
+		git remote add upstream <url>
+
+	# Editar un remoto
+
+		git remote set-url <remote> <url>
+
+	# Visualizar todos los remotos
+
+		git remote -v
+
+
+#VERSIONAMIENTO
+	# Traer cambios
+		
+		git pull <remote> <branch>
+
+	# Descartar cambios en local
+
+		git stash
+
+	# Subir cambios
+
+		git push <remote> <branch>
+
+#COMMITS
+	#Revertir a un commit 
+
+		git checkout <commit>
+		git reset --hard <commit>
+		git push <remote> HEAD:<branch> --force
+
+	# Revertir un commit
+
+		git reset --hard HEAD~1
+
+
+# CONECTAR VIA SSH
+	
+	ssh-keygen -t rsa -b 4096 -C "<correo>"     (Se dan 4 enter)
+	ssh-add ~/.ssh/id_rsa
+	clip < ~/.ssh/id_rsa.pub
+
+	(Luego en gitHub settings - SSH and GCP keys y pegar la información en key)
+
+
+#COMMITS
+	git commit -m " "     										-> Un solo mensaje
+	git commit -m " " -m " " 									-> titulo y descripción
+	git commit -m  “ .. “  --no-verify 
+
+#CONFIGURAR RUTAS DEMASIADO LARGAS
+	git config --system core.longpaths true
+
+#VISUALIZAR RAMAS
+	git log --all --decorate --oneline --graph
+
+#QUITA LOS ARCHIVOS MODIFICADOS DEL STAGE
+	git reset
+
