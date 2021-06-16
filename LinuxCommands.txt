@@ -5,3 +5,15 @@
 
 # Dar permisos de usuario root
     
+
+# CONECTAR VIA SSH
+	
+	ssh-keygen -t rsa -b 4096 -C "<correo>"     (Se dan 4 enter)
+	ssh-add ~/.ssh/id_rsa
+	clip < ~/.ssh/id_rsa.pub
+
+# SEE THE RESOURSES STATUS
+    df -hT
+
+# SEE THE LOGS
+    tail -f /<path>/<filename>.log

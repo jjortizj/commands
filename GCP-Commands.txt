@@ -15,8 +15,7 @@
 	 
 #Cambiar de cluster
 	gcloud container clusters get-credentials <cluster>
-
 	gcloud container clusters get-credentials <cluster> --zone <zone> --project <project>
 	
-
-
+# IMPORT DATABSE 
+	gcloud sql import sql [INSTANCE_SQL_NAME] gs://[BUCKET_NAME]/[IMPORT_FILE_NAME] --database=[DATABASE_NAME]
