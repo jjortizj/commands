@@ -1,0 +1,12 @@
+# CREATE AN USER
+    CREATE USER '$User' IDENTIFIED BY '$password';
+    GRANT SELECT, SHOW VIEW ON $database_name.* TO '$User';
+    FLUSH PRIVILEGES;
+
+
+SHOW GRANTS FOR '$User_name';
+
+SELECT User,Host FROM mysql.user;
+
+# Delete an User
+    DROP USER '$User_name';

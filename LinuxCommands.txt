@@ -1,12 +1,9 @@
-# Actualizar el sistema
+# UPDATE
     sudo apt-get update
     sudo apt-get upgrade
-    sudo apt update
+    sudo apt update  
 
-# Dar permisos de usuario root
-    
-
-# CONECTAR VIA SSH
+# GENERATE SSH KEY
 	
 	ssh-keygen -t rsa -b 4096 -C "<correo>"     (Se dan 4 enter)
 	ssh-add ~/.ssh/id_rsa
@@ -17,3 +14,16 @@
 
 # SEE THE LOGS
     tail -f /<path>/<filename>.log
+
+# SEE THE OPEN PORTS
+    netstat -tulpn
+
+# Kill Process 
+    sudo kill -9 $(sudo lsof -t -i:9001)
+        lsof   - list of files(Also used for to list related processes)
+        -t     - show only process ID
+        -i     - show only internet connections related process
+        :9001  - show only processes in this port number
+        kill   - command to kill the process
+        -9     - forcefully
+        sudo   - command to ask admin privilege(user id and password).

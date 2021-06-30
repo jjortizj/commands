@@ -19,3 +19,9 @@
 	
 # IMPORT DATABSE 
 	gcloud sql import sql [INSTANCE_SQL_NAME] gs://[BUCKET_NAME]/[IMPORT_FILE_NAME] --database=[DATABASE_NAME]
+
+# EXPORT DATABASE
+	gcloud sql export sql beta gs://privun --database=privun
+
+# MOVE FILES FROMS INSTANCES TO BUCKETS 
+	gsutil cp /[FOLDER]/[FILE_NAME]} gs://[BUCKET_NAME]/[FOLDER_NAME]
