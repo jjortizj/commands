@@ -99,3 +99,4 @@ git push origin develop
 #QUITA LOS ARCHIVOS MODIFICADOS DEL STAGE
 	git reset
 
+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

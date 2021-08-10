@@ -1,0 +1,12 @@
+ssh -L 8080:localhost:8080 ubuntu@ec2-35-171-25-79.compute-1.amazonaws.com -i jortiz.pem
+
+
+ssh -L 8080:localhost:8080 root@44.196.134.74 -i "jortiz-backups.pem"
+ssh -L 8080:localhost:8080 ubuntu@44.196.134.74 -i "jortiz-backups.pem"
+
+User: OmniPro-Admin
+Pass: By/U2?$-VD#N}VwP
+
+
+
+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
