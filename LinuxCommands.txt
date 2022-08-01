@@ -11,6 +11,7 @@
 
 # SEE THE RESOURSES STATUS
     df -hT
+    ncdu
 
 # SEE THE LOGS
     tail -f /<path>/<filename>.log
@@ -28,5 +29,51 @@
         -9     - forcefully
         sudo   - command to ask admin privilege(user id and password).
 
+# Send Files on SSH
+    rsync -azvP <USER>@:<HOST>:/tmp/<FILE> <PATH>
+
+# Keep Process running in background
+    ./node_exporter 2>&1 &
+
 # List files and folder
     ls -alh
+
+# Compress a Folder
+    tar -zcvf <name>.tar.gz <name>
+
+# Decompress a .tar filename
+    tar -xf archive.tar.gz
+
+
+
+ssh -t GlobalBank-Bastion ssh jenkins@172.31.43.165 -i id_rsa
+
+
+# Top de visitas de ip
+cat access.log | tail -n5000 | awk '{print $1}' | sort | uniq -c | sort -nr | head -n15
+
+
+
+
+sonar-scanner \
+  -Dsonar.projectKey=Tova2 \
+  -Dsonar.sources=./app/code/Omnipro,./app/design \
+  -Dsonar.host.url=http://localhost:9000/ \
+  -Dsonar.login=f2f56049a85c7672d6fd99d98078ab4fcb5a2ecc
+
+
+/opt/sonar-scanner/bin/sonar-scanner \
+  -Dsonar.projectKey=Tova-jenkins \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=http://18.233.155.28:9000/ \
+  -Dsonar.login=3a2f94dd6691f3efeaca45d19bc88136399d74d4
+
+
+Service: 3ittnommgncyc
+Service ID: 2jpaQcUCkQ0EIfOOr5Ekrx
+API Token: 5YTGR3ptnxDPzZsEKgjwYvkSI-UKNJV9
+
+
+
+
+ssh 1.ent-3zayyntntqvvk-production-vohbr3y@ssh.us-5.magento.cloud

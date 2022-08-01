@@ -25,3 +25,6 @@
 
 # MOVE FILES FROMS INSTANCES TO BUCKETS 
 	gsutil cp /[FOLDER]/[FILE_NAME]} gs://[BUCKET_NAME]/[FOLDER_NAME]
+
+# Copy file from VM to Local
+	gcloud compute scp privun-nodo-beta:/tmp/Privun-Beta-20220104.sql.gz /home/omnipro/

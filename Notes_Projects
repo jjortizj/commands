@@ -1,0 +1,27 @@
+
+
+## SEIKO
+
+Para desplegar, entrar a la instacia correspondiente y bajar cambios con un Git Pull
+Para compilar entrar a la carpeta vue_storefront y correr el siguiente comando:
+    yarn install && yarn build && yarn start
+
+Para compilar el API, entrar a la carpeta vue_storefront_api y correr el siguiente comando:
+    yarn install && yarn build && yarn start
+
+Para reindexar el api entrar a la carpeta vue_storefront_api y correr el siguiente comando:
+    yarn db rebuild
+
+Para validad que los servicios de Elasticsearch  y kibana estan corriendo correr el siguiente comando:
+    docker ps 
+
+Para recrear los contenerdores correr el siguiente comando en las carpetas de vue_storefront y vue_storefront_api:
+    docker-compose up -d 
+
+Para revisar los logs del Elasticsearch:
+    docker logs -f <container_id>
+
+Para reindexar Elasticsearch:
+    entrar a la carpeta mage2vuestorefront/src y correr el script llamado: fullreindex.sh
+
+sudo chown ubuntu:ubuntu -R vue-storefront

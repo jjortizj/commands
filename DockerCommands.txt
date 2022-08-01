@@ -44,3 +44,5 @@ DOCKER COMMANDS
 # Manage a container
 	docker container stop
 	docker container start
+
+db.rocketchat_message.remove( { ts: { $lt: ISODate("2022-01-01") } } );

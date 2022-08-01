@@ -1,0 +1,125 @@
+# GENERATE A DB'S BACKUP
+    mysqldump -h <host> --user=<user> -p --single-transaction --lock-tables=false <db-name>  | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip > /tmp/<project>-p-$(date +%Y%m%d).sql.gz
+    mysqldump -h database.internal --user=user -p --single-transaction --lock-tables=false main | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip > /tmp/Arkansas-Integrations$(date +%Y%m%d).sql.gz
+
+    sudo mysqldump -h 127.0.0.1 --user=Right4toS4p -p --single-transaction privun --ignore-table=privun.low_stock | sudo sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | sudo gzip > /tmp/privun-Prod-$(date +%Y%m%d).sql.gz
+    mysqldump -h rds.prod.seiko --user=root -p --single-transaction --lock-tables=false magento  | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip > /tmp/Seiko-Prod-$(date +%Y%m%d).sql.gz
+    mysqldump -h 127.0.0.1 --user=zyo5bsyne5ibu -p --single-transaction --lock-tables=false zyo5bsyne5ibu  | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip > /tmp/TerpelPeru-Prod-$(date +%Y%m%d).sql.gz
+    mysqldump -h 127.0.0.1 --user=kvyhs5qs52cwy -p --single-transaction --lock-tables=false kvyhs5qs52cwy  | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip > /tmp/Coopelesca-core_config_data-Prod-$(date +%Y%m%d).sql.gz
+
+# GENERATE BACKUP OF TABLE
+    mysqldump -u <user> -h <host> -p <db-name> --set-gtid-purged=OFF core_config_data > /tmp/<project>-config-data-$(date +%Y%m%d-%T).sql
+    mysqldump -u kvyhs5qs52cwy -h 127.0.0.1 -p kvyhs5qs52cwy core_config_data > /tmp/Coopelesca-Production-config-data-$(date +%Y%m%d-%T).sql
+
+    mysqldump -u zyo5bsyne5ibu -h 127.0.0.1 -p zyo5bsyne5ibu --set-gtid-purged=OFF core_config_data > /tmp/TerpelPeru-Prod-config-data-$(date +%Y%m%d-%T).sql
+    mysqldump -u user -h database.internal -p --set-gtid-purged=OFF core_config_data > /tmp/Arkansas-config-data-integration2$(date +%Y%m%d-%T).sql
+    mysqldump -u user -h 127.0.0.1 -p main --set-gtid-purged=OFF core_config_data > /tmp/Alpina-integration-config-data-$(date +%Y%m%d-%T).sql
+
+# IMPORT core_config_data TABLE
+    mysql -h <host> -u <user>  -p <db-name> < /tmp/<filename>.sql
+
+# DOWNLOAD A FILE TO LOCAL 
+    rsync -azvP 1.ent-xqxu62h47khjk-staging-5em2ouy@ssh.us-5.magento.cloud:/tmp/TerpelCo-stg-20220104.sql.gz xqxu62h47khjk-integration-5ojmyuq--mymagento@ssh.us-5.magento.cloud:/tmp/
+    rsync -azvP 1.ent-3ittnommgncyc-production-vohbr3y@ssh.us-5.magento.cloud:/tmp/media.tar.gz /home/omnipro/
+
+# IMPORT DATABASE AND REPLACE TABLE    
+    date;zcat /tmp/dump-data-base-20220728-16-36-04.sql.gz | mysql -h 127.0.0.1 -u zm7ol2nlyffpc_stg -p zm7ol2nlyffpc_stg;date;
+    mysql -h 127.0.0.1 -u kvyhs5qs52cwy -p kvyhs5qs52cwy < /tmp/Coopelesca-Production-config-data-20220629-17:47:01.sql
+
+    date;zcat /tmp/dump-data-base-20220624-15:26:45.sql.gz | mysql -h database.internal -u user;date;
+    
+####################
+# MAGENTO COMMANDS #
+####################
+    bin/magento setup:upgrade
+    bin/magento setup:di:compile
+    bin/magento setup:static-content:deploy -f
+    bin/magento cache:clean
+    bin/magento cache:flush
+    bin/magento admin:user:create 
+    bin/magento setup:store-config:set --base-url-secure=<url-secure>
+    mgc environment:redeploy
+
+    bin/magento maintenance:enable
+# Reindex
+    date;bin/magento indexer:reindex;date
+
+# Disable two factor authentication module
+    sudo bin/magento module:disable Magento_TwoFactorAuth
+    sudo bin/magento cache:flush 
+
+# Select Google Authenticator
+    sudo bin/magento config:set twofactorauth/general/force_providers google
+    sudo bin/magento config:set twofactorauth/google/otp_window 60
+    sudo bin/magento security:tfa:google:set-secret admin MFSG22LOGEZDGNBV
+
+# Magento's logs 
+    sudo tail -f /var/www/html/magento/var/log/system.log
+    sudo tail -f /var/www/html/magento/var/log/exception.log
+    sudo tail -f /var/www/html/magento/var/log/debug.log
+
+# Nginx's logs
+    sudo tail -f /var/log/nginx/access.logarieltorresjimenez21@gmail.com
+    sudo tail -f /var/log/nginx/error.log
+
+# CREATE USER ADMIN
+    bin/magento admin:user:create --admin-user=lruiz --admin-password=csA26BRbsZRxQEwQ --admin-email="luis.ruiz@omni.pro" --admin-firstname=Luis --admin-lastname=Ruiz
+    bin/magento admin:user:create --admin-user=comercial --admin-password=zjD8XYsjcqLCQ5bq8Z --admin-email="comercial@omni.pro" --admin-firstname=Comercial --admin-lastname=Omnipro
+    bin/magento admin:user:create --admin-user=jortizg --admin-password=password123 --admin-email="jorge.ortiz@omni.pro" --admin-firstname=Jorge --admin-lastname=Ortiz
+    
+    delete from admin_user where username='lnatera'
+
+seiko
+password123
+    
+mysqldump -h 10.1.64.31 --user=privun -p --single-transaction --lock-tables=false privun  | sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | gzip > /tmp/Privun-Beta-$(date +%Y%m%d).sql.gz
+rsync -azvP seiko:/tmp/Seiko-p-20211118.sql.gz /home/omnipro/
+
+
+
+https://200.110.155.93:2087/
+user: root
+pass: 6fxAtS383g5NLT
+
+    sudo tail -f /var/log/nginx/error.log
+
+jortiz@vistamaresrealty.com
+IwontGiveUp37
+
+webmastergm@grupomelo.com
+SBSRtF8vgBduJLBZ
+
+mr2 sys:cron:run terpel_customprices_updatecustomprices
+
+
+ # tablas mas pesadas
+SELECT
+TABLE_SCHEMA AS `Database`,
+TABLE_NAME AS `Table`,
+ROUND((DATA_LENGTH + INDEX_LENGTH) / 1024 / 1024) AS `Size (MB)`
+FROM
+information_schema.TABLES
+ORDER BY
+(DATA_LENGTH + INDEX_LENGTH)
+DESC;
+
+
+        'host' => 'db.stage.bellini',
+                'dbname' => 'bellinistg',
+                'username' => 'KeyTo094s',
+                'password' => '8viGXMx6SUEdzP'
+
+sudo mysqldump -h db.stage.bellini --user=KeyTo094s --password=8viGXMx6SUEdzP --single-transaction --lock-tables=false bellinistg --set-gtid-purged=OFF | sudo sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | sudo gzip > /scripts/backups/jenkins-backup-ondemand.sql.gz
+
+
+#!/bin/bash
+#Backup de la base de datos de prod
+echo "\n------------------INICIO-----------------------\n"
+date
+echo "\n-----------------------------------------\n"
+echo "procesando la copia de la base de datos"
+sudo mysqldump -h db.stage.bellini --user=KeyTo094s --password=8viGXMx6SUEdzP --single-transaction --lock-tables=false bellinistg --set-gtid-purged=OFF | sudo sed -e 's/DEFINER[ ]*=[ ]*[^*]*\*/\*/' | sudo gzip > /scripts/backups/jenkins-backup-ondemand.sql.gz
+echo "backup terminado"
+echo "\n-----------------------------------------\n"
+date
+echo "\n-------------------FIN----------------------\n"
